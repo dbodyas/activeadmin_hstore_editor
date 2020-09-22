@@ -10,7 +10,7 @@ module ActiveAdminHstoreEditor
         unless params.key?(request_namespace)
           raise ActionController::ParameterMissing, request_namespace
         end
-        columns = resource.class.columns_hash
+        columns = resource_class.columns_hash
         fields.concat(columns.select { |_, attr| attr.type == :hstore }.keys)
         fields.each do |key|
           next unless params[request_namespace].key?(key)
